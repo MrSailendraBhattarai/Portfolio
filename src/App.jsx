@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Sun, Moon, Code, Database, Server, Mail, Github,
-  Linkedin, ArrowUpRight, Award, User, Send, CheckCircle,
+  Linkedin, ArrowUpRight, Award, Send, CheckCircle,
   Globe, MapPin, GraduationCap, Briefcase
 } from 'lucide-react';
 
@@ -30,7 +30,7 @@ function GalleryTile({ img, onClick }) {
   );
 }
 
-function FolderCard({ label, count, cover, accent, onClick }) {
+function FolderCard({ label, count: _count, cover, accent, onClick }) {
   return (
     <div className="gallery-folder-card" onClick={onClick}>
       <div className="gallery-folder-cover">
@@ -48,6 +48,8 @@ function FolderCard({ label, count, cover, accent, onClick }) {
   );
 }
 
+const titles = ['Python & Django Developer', 'BIT Student @ Himalayan WhiteHouse International College', 'Web Developer', 'IT Enthusiast'];
+
 export default function App() {
   const [isLightTheme, setIsLightTheme] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -60,7 +62,6 @@ export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   // Typewriter effect
-  const titles = ['Python & Django Developer', 'BIT Student @ Himalayan WhiteHouse International College', 'Web Developer', 'IT Enthusiast'];
   const [titleIndex, setTitleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);

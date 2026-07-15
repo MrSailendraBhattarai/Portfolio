@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Terminal as TerminalIcon, X, Minimize2 } from 'lucide-react';
+import { Terminal as TerminalIcon, Minimize2 } from 'lucide-react';
 
 export default function Terminal({ isOpen, onClose, isLightTheme, toggleTheme }) {
   const [history, setHistory] = useState([

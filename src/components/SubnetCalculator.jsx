@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cpu, Network, RefreshCw } from 'lucide-react';
+import { Network } from 'lucide-react';
 
 export default function SubnetCalculator() {
   const [ip, setIp] = useState('192.168.1.1');
