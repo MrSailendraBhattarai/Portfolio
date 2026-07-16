@@ -478,7 +478,7 @@ export default function App() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '8px' }}>
                 {[
                   { icon: <GraduationCap size={18} />, label: 'Education', value: 'BIT — Purbanchal University' },
-                  { icon: <Briefcase size={18} />, label: 'Experience', value: '2+ Years' },
+                  { icon: <Briefcase size={18} />, label: 'Experience', value: '4+ Years' },
                   { icon: <Globe size={18} />, label: 'College', value: 'Himalayan WhiteHouse International College, Putalisadak, Kathmandu' },
                   { icon: <Award size={18} />, label: 'Projects', value: '10+ Completed' },
                 ].map((item, i) => (
