@@ -1,14 +1,14 @@
 import React from 'react';
 import { ExternalLink, Github, Folder } from 'lucide-react';
 
-export default function ProjectCard({ title, description, tags, githubLink, liveLink, image }) {
+export default function ProjectCard({ title, description, tags, githubLink, liveLink, bgImage }) {
   return (
     <div className="glass-panel" style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden', position: 'relative' }}>
-      {image && (
+      {bgImage && (
         <div style={{
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${bgImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.2,
