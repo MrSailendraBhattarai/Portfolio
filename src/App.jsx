@@ -396,7 +396,7 @@ export default function App() {
                 { label: 'GitHub Repos', value: '16+' },
                 { label: 'Projects Built', value: '10+' },
                 { label: 'Certificates', value: '5' },
-                { label: 'Years Learning', value: '2+' },
+                { label: 'Years Learning', value: '4+' },
               ].map((stat, i) => (
                 <div key={i} style={{ textAlign: 'center' }}>
                   <div className="gradient-text" style={{ fontSize: '26px', fontWeight: 800 }}>{stat.value}</div>
