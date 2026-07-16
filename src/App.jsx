@@ -98,7 +98,7 @@ export default function App() {
       description: 'A comprehensive event management platform built as a major project. Handles event ticketing, registration, and management.',
       tags: ['PHP', 'MySQL', 'Web', 'Bootstrap'],
       category: 'web',
-      image: 'https://github.com/user-attachments/assets/1a2c8b89-9c61-4227-bc46-5b32278138d1',
+      image: '/gallery/event-sathi-bg.png',
       githubLink: 'https://github.com/MrSailendraBhattarai/Event-Sathi',
     },
     {
