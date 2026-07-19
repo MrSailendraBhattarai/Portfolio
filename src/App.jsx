@@ -60,6 +60,7 @@ export default function App() {
   const [typedText, setTypedText] = useState('');
   const [selectedCert, setSelectedCert] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Typewriter effect
   const [titleIndex, setTitleIndex] = useState(0);
@@ -331,17 +332,29 @@ export default function App() {
       <nav className="navbar">
         <div className="container nav-container">
           <a href="#home" className="logo">Sailendra</a>
-          <ul className="nav-menu">
+          <button
+            className={`nav-hamburger ${mobileMenuOpen ? 'open' : ''}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span /><span /><span />
+          </button>
+          <ul className={`nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
             {['about', 'timeline', 'skills', 'projects', 'gallery', 'certificates', 'contact'].map(section => (
               <li key={section}>
-                <a href={`#${section}`} className={`nav-link ${activeSection === section ? 'active' : ''}`}>
+                <a href={`#${section}`}
+                  className={`nav-link ${activeSection === section ? 'active' : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
                 </a>
               </li>
             ))}
             <li>
               <a href={`${BASE}/MyCV.pdf`} target="_blank" rel="noopener noreferrer"
-                className="btn btn-primary" style={{ padding: '8px 18px', fontSize: '14px' }}>
+                className="btn btn-primary" style={{ padding: '8px 18px', fontSize: '14px' }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 View CV
               </a>
             </li>
@@ -351,6 +364,7 @@ export default function App() {
               </button>
             </li>
           </ul>
+          {mobileMenuOpen && <div className="nav-overlay" onClick={() => setMobileMenuOpen(false)} />}
         </div>
       </nav>
 
@@ -358,18 +372,15 @@ export default function App() {
       <section id="home" className="container">
         <div className="hero-wrapper">
           <div className="hero-content">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div className="hero-location">
               <MapPin size={16} style={{ color: 'var(--accent-cyan)' }} />
-              <span style={{ fontSize: '14px', color: 'var(--text-secondary)' }}>Lokanthali, Bhaktapur, Nepal</span>
+              <span>Lokanthali, Bhaktapur, Nepal</span>
             </div>
             <span className="hero-subtitle">Hi, I'm</span>
             <h1 className="hero-title">
               <span className="gradient-text">Sailendra Bhattarai</span>
             </h1>
-            <div style={{
-              fontSize: '22px', fontWeight: 600, color: 'var(--text-secondary)',
-              minHeight: '32px', fontFamily: 'var(--font-mono)', marginBottom: '8px'
-            }}>
+            <div className="hero-typed-text">
               <span>{typedText}</span>
               <span className="terminal-cursor" style={{ width: '10px', height: '22px' }}></span>
             </div>
@@ -391,16 +402,16 @@ export default function App() {
               </a>
             </div>
             {/* Stats */}
-            <div style={{ display: 'flex', gap: '24px', marginTop: '24px', flexWrap: 'wrap' }}>
+            <div className="hero-stats">
               {[
                 { label: 'GitHub Repos', value: '16+' },
                 { label: 'Projects Built', value: '10+' },
                 { label: 'Certificates', value: '5' },
                 { label: 'Years Learning', value: '4+' },
               ].map((stat, i) => (
-                <div key={i} style={{ textAlign: 'center' }}>
-                  <div className="gradient-text" style={{ fontSize: '26px', fontWeight: 800 }}>{stat.value}</div>
-                  <div style={{ fontSize: '12px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{stat.label}</div>
+                <div key={i} className="hero-stat-item">
+                  <div className="gradient-text hero-stat-value">{stat.value}</div>
+                  <div className="hero-stat-label">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -449,7 +460,7 @@ export default function App() {
             <h2>About Me</h2>
             <p>A dedicated web developer bridging frontend and backend technologies.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '48px', alignItems: 'center' }}>
+          <div className="about-grid">
             {/* About photo */}
             <div>
               <img
@@ -475,7 +486,7 @@ export default function App() {
                 <strong style={{ color: 'var(--text-primary)' }}>Django</strong> and exploring modern frontend frameworks.
                 I believe in writing clean, maintainable code and creating user-friendly interfaces that solve real-world problems.
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '8px' }}>
+              <div className="about-details-grid">
                 {[
                   { icon: <GraduationCap size={18} />, label: 'Education', value: 'BIT — Purbanchal University' },
                   { icon: <Briefcase size={18} />, label: 'Experience', value: '4+ Years' },
@@ -653,7 +664,7 @@ export default function App() {
               >
                 ← Back to folders
               </button>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '14px' }}>
+              <div className="gallery-open-grid">
                 {galleryImages
                   .filter(i => i.category === openFolder)
                   .map((img, idx) => (
@@ -672,7 +683,7 @@ export default function App() {
             <h2>Certificates & Achievements</h2>
             <p>Verified credentials earned through training, workshops and online platforms.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+          <div className="certificates-grid">
             {certificatesData.map((cert, idx) => (
               <div key={idx} className="glass-panel" style={{ overflow: 'hidden' }}>
                 <div style={{ height: '200px', overflow: 'hidden', borderBottom: '1px solid var(--border-color)' }}>
